@@ -9,7 +9,8 @@ gem 'sqlite3'
 gem 'rb-readline'
 gem 'therubyracer'
 gem 'execjs'
-
+gem 'taps'
+gem 'rvm'
 
 # Gems used only for assets and not required
 # in production environments by default.
