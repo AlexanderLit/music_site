@@ -1,60 +1,50 @@
 require 'spec_helper'
 
-
-
 describe "Static pages" do
-# describe StaticPagesController, :type => :controller do
-  # render_views
- describe "Home page" do
 
+  subject { page }
 
-
-  it "should have the content 'Welcome'" do
-    visit root_path
-    page.should have_selector('p', :content => "This is the home page of the Music Site.")
+  describe "Home page" do
+    before { visit root_path }
+    
+    it { should have_selector('h1', text: 'Welcome to the Music Site') }
+    it { should have_selector('title', text: full_title('')) }
+    it { should_not have_selector('title', text: '| Home') }
   end
 
-  it "should have the right title" do
-  	visit root_path
-  	page.should have_selector('title', :content => "Music Site | Home")
-  end
- end
-
- describe "Help page" do
-
-  it "should have the content 'Help'" do
-   visit help_path
-   page.should have_content('Help')
+  describe "Help page" do
+    before { visit help_path }
+    
+    it { should have_selector('h1', text: 'Help') }
+    it { should have_selector('title', text: full_title('Help')) }
   end
 
-  it "should have the right title" do
-  	visit help_path
-  	page.should have_selector('title', :content => "Music Site | Help")
-  end
- end
+  describe "About page" do
+    before { visit about_path }
 
- describe "About page" do
-
-  it "should have the content 'About Us'" do
-   visit about_path
-   page.should have_content('About Us')
+    it { should have_selector('h1', text: 'About Us') }
+    it { should have_selector('title', text: full_title('About Us')) }
   end
 
-  it "should have the right title" do
-  	visit about_path
-  	page.should have_selector('title', :content => "Music Site | About")
-  end
+  # describe "Contact page" do
+  #   before { visit contact_path }
+    
+  #   it { should have_selector('h1', text: 'Contact') }
+  #   it { should have_selector('title', text: full_title('Contact')) }
+  # end
 
   it "should have the right links on the layout" do
     visit root_path
-    click_link "About"
-    page.should have_selector 'title', content: full_title('About')
+    # click_link "About"
+    # page.should have_selector 'title', text: full_title('About Us')
+    # click_link "Contact"
+    # page.should have_selector 'title', text: full_title('Contact')
     click_link "Help"
-    page.should have_selector 'title', content: full_title('Help')
+    page.should have_selector 'title', text: full_title('Help')
     click_link "Home"
     click_link "Sign up now!"
-    page.should have_selector 'title', content: full_title('Sign Up')
+    page.should have_selector 'title', text: full_title('Sign up')
+    click_link "music site"
+    page.should have_selector 'h1', text: 'Welcome to the Music Site'
   end
- end
-
 end

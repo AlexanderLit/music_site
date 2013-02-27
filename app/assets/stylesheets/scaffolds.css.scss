@@ -1,9 +1,13 @@
+
+
 body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+
+
 }
 
 p, ol, ul, td {
@@ -39,11 +43,6 @@ div {
   color: green;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
-}
 
 #error_explanation {
   width: 450px;
@@ -67,3 +66,4 @@ div {
     list-style: square;
   }
 }
+
